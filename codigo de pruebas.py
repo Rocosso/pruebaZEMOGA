@@ -21,3 +21,15 @@ from ProfileTwitter import profileTw
 profileTw = [
     { "name" : "luis","experience" : "better programmer today", "image" : "profile twitter image" }
 ]
+
+# tweet1._json
+# print(json.dumps(user._json, indent=2))
+    print(user.name)
+    print(user.description)
+    print(user.profile_image_url)
+# print(tweet)
+    print(f'Tweet text 1:{tweet1.text}')
+    print(f'Tweet text 2:{tweet2.text}')
+    print(f'Tweet text 3:{tweet3.text}')
+    print(f'Tweet text 4:{tweet4.text}')
+    print(f'Tweet text 5:{tweet5.text}')
