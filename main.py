@@ -1,29 +1,28 @@
 from flask import *
-
+from ProfileTwitter import getTweets
 
 app = Flask(__name__, template_folder='templates')
 
 
 @app.route('/') #crear la pagina de bienvenida
 def home():
-    nombre = jsonify({'name':'Jacob!'})
+    tweets = getTweets()
     templateData = {
         'titulo': "Prueba Zemoga",
-        'imagenPerfil': "si,aunque no parezca esto es una imagen",
-        'nombre': nombre,
-        'experiencia': "pos mi experiencia no es mucha la verdad ",
-        'Tweet1': "Tweet 1",
-        'Tweet2': "Tweet 2",
-        'Tweet3': "Tweet 3",
-        'Tweet4': "Tweet 4",
-        'Tweet5': "Tweet 5"
+        'nombre': tweets['name'],
+        'experiencia': tweets['experience'],
+        'imagenPerfil': tweets['image'],
+        'Tweet1': tweets['T1'],
+        'Tweet2': tweets['T2'],
+        'Tweet3': tweets['T3'],
+        'Tweet4': tweets['T4'],
+        'Tweet5': tweets['T5']
     }
     return render_template('home.html', **templateData)
 
 
 @app.route('/modificar') #crear la segunda pagina para introducir la informacion a buscar
 def modificar():
-    #<!-- ir a la API de twitter con los datos de GCG y extraer esa info -->
     return render_template('modificar.html')
 
 
