@@ -14,10 +14,20 @@ api = tweepy.API(auth, wait_on_rate_limit=True)
 
 user_id = "57741058"
 user = api.get_user(screen_name="twitterapi")
-statuses = api.user_timeline(id=user.id, count=5)
-
+tweets = api.user_timeline(id=user.id, count=5)
+tweet1 = tweets[0]
+tweet2 = tweets[1]
+tweet3 = tweets[2]
+tweet4 = tweets[3]
+tweet5 = tweets[4]
+#tweet1._json
 #print(json.dumps(user._json, indent=2))
 print(user.name)
 print(user.description)
 print(user.profile_image_url)
-print(statuses)
+#print(tweet)
+print(f'Tweet text 1:{tweet1.text}')
+print(f'Tweet text 2:{tweet2.text}')
+print(f'Tweet text 3:{tweet3.text}')
+print(f'Tweet text 4:{tweet4.text}')
+print(f'Tweet text 5:{tweet5.text}')
