@@ -11,6 +11,9 @@ def home():
 
 @app.route('/modificar') #crear la segunda pagina para introducir la informacion a buscar
 def modificar():
+    read_db = db.get_all()
+    for x in read_db:
+        print(x)
     return render_template('modificar.html')
 
 
@@ -23,7 +26,6 @@ def gfg():
         twitter = request.form.get("twitter")         # obtener el texto de "twitter" nuevo = "twitter" en el formulario HTML
         tweets = getTweets(twitter)
         new_profile = print_home(tweets)
-        # <!-- falta buscar los tweets -->
         return new_profile
 
     return render_template("modificar.html")

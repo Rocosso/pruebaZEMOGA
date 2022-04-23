@@ -1,8 +1,6 @@
 import mysql.connector
 from mysql.connector import Error
 
-cas = ['a','b','c','d','e','f','g','h']
-target = ['a','b','c','d','e','f','g','h']
 
 class Database:
     def __init__(self):
@@ -25,8 +23,7 @@ class Database:
         cursor = self.databaseConection.cursor()
         cursor.execute("SELECT * FROM portfolio")
         data = cursor.fetchall()
-        for x in data:
-            print(x)
+        return data
 
     def create(self, profile):
         cursor = self.databaseConection.cursor()
