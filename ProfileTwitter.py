@@ -1,7 +1,7 @@
 import tweepy
 import json
 
-def getTweets():
+def getTweets(screenname):
     API_key = "KRy7l0v8wex3w8Sy5zThai3Ea"
     API_secret_key = "X2eBm0Y21kYEuR74W3Frqc2JVIizOj8Q1EVGatDsEVVEJo0ucu"
     Access_token = "1220032047516921859-otvXjhExyUTZ5GLxssc9h5ORqtPZja"
@@ -12,8 +12,8 @@ def getTweets():
 
     api = tweepy.API(auth, wait_on_rate_limit=True)
 
-    user_id = "57741058"
-    user = api.get_user(screen_name="twitterapi")
+
+    user = api.get_user(screen_name=screenname)
     tweets = api.user_timeline(id=user.id, count=5)
     tweet1 = tweets[0]
     tweet2 = tweets[1]
@@ -21,12 +21,7 @@ def getTweets():
     tweet4 = tweets[3]
     tweet5 = tweets[4]
 
-    tweets = {"name":user.name, "experience":user.description,
+    tweets = {"id":user.id, "name":user.name, "experience":user.description,
               "image":user.profile_image_url, "T1":tweet1.text,"T2":tweet2.text,
               "T3":tweet3.text,"T4":tweet4.text,"T5":tweet5.text}
     return tweets
-
-tweets = getTweets()
-for k,v in tweets.items():
-    print ("%s -> %s" %(k,v))
-#print(tweets)
