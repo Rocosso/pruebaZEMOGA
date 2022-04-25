@@ -1,0 +1,200 @@
+openapi: 3.0.1
+info:
+  title: API REST de pruba de trabajo para ZEMOGA S.A.S.
+  description: Esta API REST se encarga de comunicarse con la red social Twitter y extraer de sus bases de datos la informacion e un perfil solicitado, sus ultimos 5 twitts y almacenarlos en una base de datos de Zemoga, cuidando el orden de solicitud y dejando almacenado el historial de consultas en la base de datos.
+  version: 1.0.0
+servers:
+- url: 0.0.0.0:8080
+  
+- url: zemoga-test-db.crhpedy9xxto.us-east-1.rds.amazonaws.com:3306
+
+tags: 
+- name: home
+  description:  este endpoint Consulta Twitter y trae por defecto la informacion de un usuario precargado en el codigo y lo pone en la plantilla HTML
+- name: modificar
+  description: consulta la base de datos de ZEMOGA y trae los datos contenidos en la base de datos URL.
+- name:  gfg
+  description:  este endpoint es el metodo POST que registra la informacion del formulario y lo trae para ser empleado por la API sobre la informacion almacenada por el usuario para ser consutada en Twitter.
+- name: print_home
+  description:  este endpoint es el metodo GET que consulta la informacion del formulario y lo trae para ser empleado por la API sobre la información precagada, la actualiza y repostea toda la informacion de la pagina de inicio cn la informacion de la consulta GET.
+
+paths:
+  /:
+    post:
+      tags:
+      - home
+      summary: Consulta Twitter y trae por defecto la informacion de un usuario precargado en el codigo para visibilizarlo en pantalla en la pagina HTML.
+      parameters:
+      - $ref: '#/components/parameters/home'
+      requestBody:
+        content:
+          aplication: python route
+            schema:
+             $ref: '#/components/schemas/home'
+        required: true
+      responses:
+        200:
+          description: {ok} se publico la pagina correctamente
+          content:
+            aplication/json:
+              schema:
+                $ref:'#/components/schemas/home'
+        400:
+          $ref: '/components/schemas/Unauthorized'
+        400:
+          $ref: '/components/schemas/BadRequest'
+      
+      tags:
+      - print_home
+      sumary: almacena en una base de datos la informacion de un usuario precargado en el codigo para visibilizarlo en pantalla en la pagina HTML.
+      parameters:
+      - $ref: '#/components/parameters/print_home'
+      requestBody:
+        content:
+          aplication: python route
+            schema:
+             $ref: '#/components/schemas/print_home'
+        required: true
+      responses:
+  /modificar{Usernametwitter}:
+    get:
+      tags:
+      - gfg
+      sumary: Consulta Twitter y trae por defecto la informacion de un usuario introducido por el usuario en la pagina /modificar al momento de clickear en el boton actualizar en el codigo para visibilizarlo en pantalla en la pagina HTML.
+      parameters:
+      - $ref: '#/components/parameters/gfg'
+      requestBody:
+        content:
+          aplication/json: 
+            schema:
+             $ref: '#/components/schemas/gfg'
+        required: true
+      responses:
+      
+        
+          
+          
+components:
+
+  responses:
+    Unauthorized:
+      description: {Unauthorized} no hay autorizacion de llamar el servicio
+      
+    Badrequest:
+      description: {BadRequest} los datos enviados son incorrectos o hay datos obligatorios no enviados
+  
+  parameters:
+    - name: home 
+        in: header
+        description: precarga los datos de APITWITTER
+        required: true
+        schema:
+          type: array list  
+  schemas:
+    home:
+      type: object
+      properties:
+        titulo: "Prueba Zemoga"
+          type: string
+          description: titulo de la pagina web home
+        nombreUsuario:  'nombre': tweets['name']
+          type: list string
+          description: nombre del usuario de twitter
+        descripcionTwitter: 'experiencia': tweets['experience']
+          type: list string
+          description: texto descriptivo del perfil del usuario en twitter
+        LinkImagenPerfilTwitter: 'imagenPerfil': tweets['image']
+          type: list string
+          description: URL de la imagen de perfil de twitter
+        primertwitt: 'Tweet1': tweets['T1']
+          type: list string
+          description: twitt mas reciente publicado por el usuario
+        segundotwitt: 'Tweet2': tweets['T2']
+          type: list string
+          description:  penultimo twitt publicado por el usuario
+        tercertwitt: 'Tweet3': tweets['T3']
+          type: list string
+          description:  antepenultimo twitt publicado por el usuario
+        cuartotwitt: 'Tweet4': tweets['T4']
+          type: list string
+          description:  cuarto twitt mas reciente publicado por el usuario
+        quintotwitt: 'Tweet5': tweets['T5']
+          type: list string
+          description:  quinto twitt mas reciente publicado por el usuario
+      
+    gfg:
+      type: object
+      properties:
+        titulo: "Prueba Zemoga"
+          type: string
+          description: titulo de la pagina web home
+        nombreUsuario:  'nombre': tweets['name']
+          type: list string
+          description: nombre del usuario de twitter
+        descripcionTwitter: 'experiencia': tweets['experience']
+          type: list string
+          description: texto descriptivo del perfil del usuario en twitter
+        LinkImagenPerfilTwitter: 'imagenPerfil': tweets['image']
+          type: list string
+          description: URL de la imagen de perfil de twitter
+        primertwitt: 'Tweet1': tweets['T1']
+          type: list string
+          description: twitt mas reciente publicado por el usuario
+        segundotwitt: 'Tweet2': tweets['T2']
+          type: list string
+          description:  penultimo twitt publicado por el usuario
+        tercertwitt: 'Tweet3': tweets['T3']
+          type: list string
+          description:  antepenultimo twitt publicado por el usuario
+        cuartotwitt: 'Tweet4': tweets['T4']
+          type: list string
+          description:  cuarto twitt mas reciente publicado por el usuario
+        quintotwitt: 'Tweet5': tweets['T5']
+          type: list string
+          description:  quinto twitt mas reciente publicado por el usuario
+        
+        
+    print_home:
+      type: object
+      properties:
+        titulo: "Prueba Zemoga"
+          type: string
+          description: titulo de la pagina web home
+        nombreUsuario:  'nombre': tweets['name']
+          type: list string
+          description: nombre del usuario de twitter
+        descripcionTwitter: 'experiencia': tweets['experience']
+          type: list string
+          description: texto descriptivo del perfil del usuario en twitter
+        LinkImagenPerfilTwitter: 'imagenPerfil': tweets['image']
+          type: list string
+          description: URL de la imagen de perfil de twitter
+          
+        correo: correo del desarrollador de la app "luischavezcastro84@gmail.com"
+          type: string
+          description:  muestra el correo del desarrollador de la app.
+        Experiencia: historia breve del desarrollador
+          type: string
+          description: mensaje que dice =  "About me:  I'm mechatronic Engineer, I've develop mainly in Hardware, building machines and control process automation, I like python and i want to be a data engineer in 5 years"
+        last_name: "Chavez Castro"
+          type: string
+          description: apellidos del desarrollador
+        first_name: "Luis Alberto"
+          type: string
+          description: nombres del desarrollador
+          
+        primertwitt: 'Tweet1': tweets['T1']
+          type: list string
+          description: twitt mas reciente publicado por el usuario
+        segundotwitt: 'Tweet2': tweets['T2']
+          type: list string
+          description:  penultimo twitt publicado por el usuario
+        tercertwitt: 'Tweet3': tweets['T3']
+          type: list string
+          description:  antepenultimo twitt publicado por el usuario
+        cuartotwitt: 'Tweet4': tweets['T4']
+          type: list string
+          description:  cuarto twitt mas reciente publicado por el usuario
+        quintotwitt: 'Tweet5': tweets['T5']
+          type: list string
+          description:  quinto twitt mas reciente publicado por el usuario
