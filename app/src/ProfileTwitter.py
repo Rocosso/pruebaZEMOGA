@@ -1,5 +1,5 @@
 import tweepy
-import json
+
 
 def getTweets(screenname):
     API_key = "KRy7l0v8wex3w8Sy5zThai3Ea"

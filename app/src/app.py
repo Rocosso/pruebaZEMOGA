@@ -1,6 +1,6 @@
 from flask import *
 from ProfileTwitter import getTweets
-from Database import db
+from db import db
 app = Flask(__name__, template_folder='templates')
 
 

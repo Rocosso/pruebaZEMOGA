@@ -1,0 +1,15 @@
+tweepy            == 4.9.0
+mysql-connector   == 2.2.9
+flask             == 2.1.2
+jinja2            == 3.1.2
+MarkupSafe        == 2.1.1
+werkzeug          == 2.1.2
+apispec           == 5.2.1
+click             == 8.1.3
+importlib-metadata== 4.11.3
+itsdangerous      == 2.1.2
+mysql-connector   == 2.2.9
+oauthlib          == 3.2.0
+requests          == 2.27.0
+requests-oauthlib == 1.3.1
+zipp              == 3.8.0
