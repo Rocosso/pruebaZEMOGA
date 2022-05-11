@@ -1,6 +1,6 @@
 from flask import *
-from ProfileTwitter import getTweets
-from db import db
+from src.ProfileTwitter import getTweets
+from src.db import db
 app = Flask(__name__, template_folder='templates')
 
 
@@ -34,15 +34,15 @@ def print_home(tweets):
     templateData = {
         'titulo': "Prueba Zemoga",
         'nombre': tweets['name'],
-        'experiencia': tweets['experience'],
         'imagenPerfil': tweets['image'],
+        'experiencia': tweets['experience'],
         'Tweet1': tweets['T1'],
         'Tweet2': tweets['T2'],
         'Tweet3': tweets['T3'],
         'Tweet4': tweets['T4'],
         'Tweet5': tweets['T5']
     }
-    db.create([tweets['id'], tweets['experience'], tweets['image'],  "luischavezcastro84@gmail.com",
+    db.create([tweets['experience'], tweets['image'], tweets['name'],  "luischavezcastro84@gmail.com",
                "About me:  I'm mechatronic Engineer, I've develop mainly in Hardware, building machines and control process automation, I like python and i want to be a data engineer in 5 years",
                 "Chavez Castro","Luis Alberto"])
     return render_template('home.html', **templateData)

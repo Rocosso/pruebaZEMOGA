@@ -33,5 +33,6 @@ class Database:
         cursor.execute(sql, profile)
         self.databaseConection.commit()
 
+
 db = Database()
 
