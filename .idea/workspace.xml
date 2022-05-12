@@ -4,8 +4,7 @@
     <list default="true" id="96cc99e6-7f2d-4d78-83cb-1a4a12854072" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/app/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +38,7 @@
       <recent name="$PROJECT_DIR$/app/src" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.app">
+  <component name="RunManager" selected="Docker.app/Dockerfile">
     <configuration name="__main__" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="flask-api-swagger-doc" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -103,8 +102,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="app/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="imageTag" value="prueba-pycharm" />
+          <option name="containerName" value="pycharm-prueba-zemoga" />
+          <option name="sourceFilePath" value="app/Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2">
+        <option name="LaunchBrowser.Before.Run" browser="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" url="localhost:8080" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Docker.app/Dockerfile" />
+      <item itemvalue="Python.__main__" />
+      <item itemvalue="Python.app" />
+      <item itemvalue="Python.db" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.app/Dockerfile" />
         <item itemvalue="Python.app" />
         <item itemvalue="Python.db" />
         <item itemvalue="Python.__main__" />
