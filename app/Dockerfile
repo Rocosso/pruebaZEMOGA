@@ -2,8 +2,9 @@ FROM python:3.11.0b1-alpine3.15
 # importamos imagen del SO, con Python previamente preinstalado y
 # con ambas versiones especificadas para evitar que actualizaciones futuras saquen de linea la app
 RUN adduser -D -g '' appoperator
+# se crea un usuario para proteger la estabilidad del sistema y evitar usar root
 USER appoperator
-
+# se selecciona el usuario creado (inicia session) a continuacion se listan las propiedades de la creacion de usuarios
 
 # adduser [OPTIONS] user_name
 # Add a user
@@ -18,9 +19,6 @@ USER appoperator
 #        -u UID          User id
 
 
-# creamos un grupo y un usuario, seleccionamos un usuario, de preferencia un suoder <-S>,
-# no SUDO ni root (por estabilidad y seguridad).
-
 WORKDIR /usr/src/bin
 # creamos el directorio del contexto
 
@@ -28,12 +26,11 @@ WORKDIR /usr/src/bin
 COPY . .
 
 RUN python3 -m pip install --no-cache-dir -r requirements.txt
-    # damos permisos e instalamos requerimientos de python3 usando PIP
+# instalamos requerimientos de python3 usando PIP
 
 EXPOSE 8080/tcp
 # activamos el puerto 8080 dentro del contenedor para ejecutar la app
 
 CMD [ "python3", "app.py" ]
-# invocamos la ruta de la app para ejecutar
-
+# invocamos la ruta de la app y la ejecutamos con Python
 

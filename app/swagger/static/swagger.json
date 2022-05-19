@@ -1,0 +1,212 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "This is the swagger file that goes with our Api Rest code develop by Luis Alberto Chavez.",
+    "version": "1.0.0",
+    "title": "Swagger API Rest Zemoga test Backend",
+    "contact": {
+      "email": "luischavezcastro@gmail.com"
+    },
+    "license": {
+      "name": "+57 3175879443",
+      "url": "https://wa.link/qz8nyl"
+    }
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "servers": [
+    {
+      "url": "0.0.0.0:8080"
+    },
+    {
+      "url": "zemoga-test-db.crhpedy9xxto.us-east-1.rds.amazonaws.com:3306"
+    },
+    {
+      "url": "api.twitter.com:443"
+    }
+  ],
+  "basePath": "/api/docs",
+  "paths": {
+    "/": {
+      "get": {
+        "operationId": "twitter.read_all",
+        "tags": [
+          "User"
+        ],
+        "summary": "Read the entire list of properties from default user Twitter API from Twitter.com and expose it in home webpage",
+        "description": "Read the default user (twitterAPI)",
+        "parameters": [
+          {
+            "name": "default user",
+            "in": "query",
+            "description": "default user for be shown in the home page (twitterAPI)",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "tweets": {
+                  "type": "string",
+                  "description": "profile by default of person to create home (twitterAPI)"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully read people list operation"
+          }
+        }
+      }
+    },
+    "/modificar/{print_home}": {
+      "post": {
+        "operationId": "TwiterProfile.create",
+        "tags": [
+          "TwiterProfile"
+        ],
+        "summary": "Create a person and add it to the people list in DB",
+        "description": "Create a new twitter profile in the people data base list",
+        "parameters": [
+          {
+            "name": "print_home",
+            "in": "path",
+            "description": "Person to create",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "fname": {
+                  "type": "string",
+                  "description": "First name of owner of profile"
+                },
+                "experience": {
+                  "type": "string",
+                  "description": "Last name of owner of profile"
+                },
+                "Tw": {
+                  "type": "string",
+                  "description": "Twitter Profile"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successfully created person in list"
+          },
+          "403": {
+            "description": "Profile twitter not exist"
+          },
+          "404": {
+            "description": "page not found"
+          },
+          "500": {
+            "description": "Successfully saved person in db list"
+          }
+        }
+      }
+    },
+    "/modificar/{gfg}": {
+      "get": {
+        "operationId": "TwiterProfile.read_one",
+        "tags": [
+          "TwiterProfile"
+        ],
+        "summary": "Read one person from the people list",
+        "description": "Read one person from the people list",
+        "parameters": [
+          {
+            "name": "gfg",
+            "in": "path",
+            "description": "get all table Portfolio from the Zemoga Database and print it by console and return it in an variable",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully read data base from Zemoga DB list operation"
+          }
+        }
+      }
+    },
+    "/{gfg}": {
+      "put": {
+        "operationId": "TwiterProfile.update",
+        "tags": [
+          "TwiterProfile"
+        ],
+        "summary": "Update  profile in home page list",
+        "description": "Update profile in home page list",
+        "parameters": [
+          {
+            "name": "gfg",
+            "in": "path",
+            "description": "profile of the person to update in the home page",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "properties": {
+                "fname": {
+                  "type": "string"
+                },
+                "lname": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          {
+            "name": "person",
+            "in": "header",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "titulo": {
+                  "type": "string"
+                },
+                "nombre": {
+                  "type": "string"
+                },
+                "imagenPerfil": {
+                  "type": "string"
+                },
+                "experiencia": {
+                  "type": "string"
+                },
+                "Tweet1": {
+                  "type": "string"
+                },
+                "Tweet2": {
+                  "type": "string"
+                },
+                "Tweet3": {
+                  "type": "string"
+                },
+                "Tweet4": {
+                  "type": "string"
+                },
+                "Tweet5": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully updated profile in home page list"
+          }
+        }
+      }
+    }
+  }
+}

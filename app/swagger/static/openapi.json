@@ -1,0 +1,95 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "This is the swagger file that goes with our server code",
+    "version": "1.0.0",
+    "title": "Swagger Rest Article"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "servers": [
+    {
+      "url": "0.0.0.0:8080"
+    },
+    {
+      "url": "zemoga-test-db.crhpedy9xxto.us-east-1.rds.amazonaws.com:3306"
+    },
+    {
+      "url": "api.twitter.com:443"
+    }
+  ],
+  "contact": "email:luischavezcastro84@gmail.com",
+  "basePath": "/api/docs",
+  "paths": {
+    "/": {
+      "get": {
+        "operationId": "twitter.read_all",
+        "tags": [
+          "User"
+        ],
+        "summary": "Read the entire list of properties from default user Twitter API from Twitter.com and expose it in home webpage",
+        "description": "Read the default user",
+        "parameters": [
+          {
+            "name": "default user",
+            "in": "query",
+            "type": "string",
+            "description": "default user for be shown in the home page",
+            "required": false
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "description": "Offset from beginning of list where to start gathering people",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully read people list operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "properties": {
+                  "fname": {
+                    "type": "string"
+                  },
+                  "lname": {
+                    "type": "string"
+                  },
+                  "timestamp": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Successfully read people list operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "properties": {
+                  "fname": {
+                    "type": "string"
+                  },
+                  "lname": {
+                    "type": "string"
+                  },
+                  "timestamp": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
